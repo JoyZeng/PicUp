@@ -13,6 +13,7 @@
 		A868498E21AF1D4700CD974B /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868498A21AF1D4700CD974B /* Quote.swift */; };
 		A868498F21AF1D4700CD974B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868498C21AF1D4700CD974B /* ViewController.swift */; };
 		A868499021AF1D4700CD974B /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868498D21AF1D4700CD974B /* QuotesViewController.swift */; };
+		A8CF786A21B1C9670067AE52 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CF786921B1C9670067AE52 /* EventMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		A868498A21AF1D4700CD974B /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		A868498C21AF1D4700CD974B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A868498D21AF1D4700CD974B /* QuotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
+		A8CF786921B1C9670067AE52 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				A868497021AF11F200CD974B /* AppDelegate.swift */,
+				A8CF786921B1C9670067AE52 /* EventMonitor.swift */,
 				A868498921AF1D4700CD974B /* Models */,
 				A868498821AF1D4700CD974B /* Utils */,
 				A868498B21AF1D4700CD974B /* Controllers */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A868498F21AF1D4700CD974B /* ViewController.swift in Sources */,
+				A8CF786A21B1C9670067AE52 /* EventMonitor.swift in Sources */,
 				A868499021AF1D4700CD974B /* QuotesViewController.swift in Sources */,
 				A868498E21AF1D4700CD974B /* Quote.swift in Sources */,
 				A868497121AF11F200CD974B /* AppDelegate.swift in Sources */,
