@@ -10,11 +10,26 @@ import Cocoa
 
 class QuotesViewController: NSViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
+    @IBOutlet weak var textLabel: NSTextField!
+    
+    let quotes = Quote.all
+    
+    var currentQuoteIndex: Int = 0 {
+        didSet {
+            updateQuote()
+        }
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        currentQuoteIndex = 0
+    }
+    
+    func updateQuote() {
+        textLabel.stringValue = String(describing: quotes[currentQuoteIndex])
+    }
 }
 
 extension QuotesViewController {
@@ -25,5 +40,21 @@ extension QuotesViewController {
             fatalError("Can not find QuotesViewController")
         }
         return viewController
+    }
+}
+
+// MARK: Actions
+
+extension QuotesViewController {
+    @IBAction func previous(sender: NSButton) {
+        currentQuoteIndex = (currentQuoteIndex - 1 + quotes.count) % quotes.count
+    }
+    
+    @IBAction func next(sender: NSButton) {
+        currentQuoteIndex = (currentQuoteIndex + 1 + quotes.count) % quotes.count
+    }
+    
+    @IBAction func quit(sender: NSButton) {
+        NSApplication.shared.terminate(sender)
     }
 }

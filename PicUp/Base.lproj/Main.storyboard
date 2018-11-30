@@ -687,11 +687,69 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vo2-3u-bXY">
+                                <rect key="frame" x="14" y="118" width="45" height="32"/>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oWl-d5-ONW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="previousWithSender:" target="XfG-lQ-9wD" id="VTh-0x-8Gx"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yH5-FE-9Db">
+                                <rect key="frame" x="421" y="118" width="45" height="32"/>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoRightTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CU6-ca-v2D">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="nextWithSender:" target="XfG-lQ-9wD" id="fJf-ly-OCw"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gof-Xe-fFE">
+                                <rect key="frame" x="180" y="13" width="120" height="32"/>
+                                <buttonCell key="cell" type="push" title="Quite Quotes" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dym-eu-CCr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="quitWithSender:" target="XfG-lQ-9wD" id="9E8-yY-LBX"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6K7-iQ-L4I">
+                                <rect key="frame" x="71" y="127" width="338" height="17"/>
+                                <textFieldCell key="cell" selectable="YES" alignment="center" title="Multiline Label" id="JKv-iB-Yow">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Gof-Xe-fFE" secondAttribute="bottom" constant="20" id="0IX-a2-W4h"/>
+                            <constraint firstItem="yH5-FE-9Db" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="BHz-01-hfZ"/>
+                            <constraint firstItem="6K7-iQ-L4I" firstAttribute="leading" secondItem="Vo2-3u-bXY" secondAttribute="trailing" constant="20" id="I6w-ag-occ"/>
+                            <constraint firstItem="Vo2-3u-bXY" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Lxp-8h-6tx" userLabel="Button.leading = leading + 20"/>
+                            <constraint firstItem="Vo2-3u-bXY" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="etR-qJ-c5I"/>
+                            <constraint firstItem="Gof-Xe-fFE" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="qOO-Qa-fmK"/>
+                            <constraint firstItem="6K7-iQ-L4I" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="t59-eF-GiP"/>
+                            <constraint firstItem="yH5-FE-9Db" firstAttribute="leading" secondItem="6K7-iQ-L4I" secondAttribute="trailing" constant="20" id="tYL-zF-msS"/>
+                            <constraint firstAttribute="trailing" secondItem="yH5-FE-9Db" secondAttribute="trailing" constant="20" id="vUE-cy-0wy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textLabel" destination="6K7-iQ-L4I" id="kG5-7V-yBV"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
+    </resources>
 </document>
