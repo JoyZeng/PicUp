@@ -1,0 +1,11 @@
+//
+//  Constant.swift
+//  PicUp
+//
+//  Created by Joy on 2018-12-02.
+//  Copyright © 2018 Joy Zeng. All rights reserved.
+//
+
+struct Constants {
+    static let IMGUR_CLIENT_ID = "CLIENT_ID"
+}
