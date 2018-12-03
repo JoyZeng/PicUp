@@ -16,8 +16,6 @@ class ImgurAPI: NSObject {
     
     let imageData = try? Data(contentsOf: URL(fileURLWithPath: imagePath))
     let base64Image = imageData?.base64EncodedString(options: .lineLength64Characters)
-    
-    let url = "https://api.imgur.com/3/upload"
         
     let parameters = [
         "image": base64Image
@@ -26,16 +24,15 @@ class ImgurAPI: NSObject {
     Alamofire.upload(multipartFormData: { multipartFormData in
         for (key, value) in parameters {
             multipartFormData.append((value?.data(using: .utf8))!, withName: key)
-        }}, to: url, method: .post, headers: ["Authorization": "Client-ID \(Constants.IMGUR_CLIENT_ID)"],
+        }}, to: Constants.Imgur.url, method: .post, headers: ["Authorization": "Client-ID \(Constants.Imgur.clientId)"],
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.response { response in
-                        //This is what you have been missing
-                        let json = try? JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String:Any]
-                        print(json)
+                        let json = try? JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String: Any]
+                        print(json as Any)
                         let imageDic = json?["data"] as? [String:Any]
-                        print(imageDic?["link"])
+                        print(imageDic?["link"] as Any)
                     }
                 case .failure(let encodingError):
                     print("error:\(encodingError)")
