@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         constructStatusButton()
 //        constructMenu()
         constructEvent()
+        NSUserNotificationCenter.default.delegate = NotificationCenter.shared
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

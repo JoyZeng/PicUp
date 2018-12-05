@@ -52,9 +52,9 @@ extension QuotesViewController {
     }
     
     @IBAction func next(sender: NSButton) {
-        
-        NotificationCenter.shared.showNotification(withTitle: "Image link is copied to clipboard", informativeText: "http://")
         currentQuoteIndex = (currentQuoteIndex + 1 + quotes.count) % quotes.count
+        
+        NotificationCenter.shared.showNotification(withTitle: "Image link is copied to clipboard", informativeText: "\(currentQuoteIndex)")
     }
     
     @IBAction func quit(sender: NSButton) {

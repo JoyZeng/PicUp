@@ -8,18 +8,22 @@
 
 import Cocoa
 
-class NotificationCenter: NSObject {
+class NotificationCenter: NSObject, NSUserNotificationCenterDelegate {
     
     static let shared = NotificationCenter()
     
     func showNotification(withTitle title: String,  informativeText: String) {
         let notification = NSUserNotification()
-        notification.identifier = "unique-id"
+        notification.identifier = "me.zengyi.PicUp"
         notification.title = title
-//        notification.subtitle = ""
         notification.informativeText = informativeText
         notification.soundName = NSUserNotificationDefaultSoundName
+        NSUserNotificationCenter.default.removeDeliveredNotification(notification)
         NSUserNotificationCenter.default.deliver(notification)
+    }
+    
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
     }
     
 }
