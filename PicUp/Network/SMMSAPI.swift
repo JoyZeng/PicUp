@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-//import AlamofireSwiftyJSON
+import SwiftyJSON
 import AppKit
 
 class SMMSAPI: NSObject {
@@ -36,18 +36,23 @@ class SMMSAPI: NSObject {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        print(response)
-//                        if let result = response.result.value {
-//                            let json = result as! NSDictionary
-//                            let code = json["code"] as! String
-//                            if code == "success" {
-//                                let url = json["data"]["url"]
-//                                print(url)
-//                            } else {
-//                                print("error")
-//                            }
-//                        }
-                        
+                        if let result = response.data {
+                            do {
+                                let json = try JSON(data: result)
+                                let code = json["code"].string
+                                if code == "success" {
+                                    if let url = json["data"]["url"].string {
+                                        print(url)
+                                    }
+                                } else if code == "error" {
+                                    if let msg = json["msg"].string {
+                                        print("Upload to smms failed: \(msg)")
+                                    }
+                                }
+                            } catch {
+                                print("Not a valid json.")
+                            }
+                        }
                     }
                 case .failure(let encodingError):
                     print("error:\(encodingError)")

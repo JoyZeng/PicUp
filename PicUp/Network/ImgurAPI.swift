@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 import AppKit
 
 class ImgurAPI: NSObject {
@@ -28,11 +29,22 @@ class ImgurAPI: NSObject {
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
-                    upload.response { response in
-                        let json = try? JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String: Any]
-                        print(json as Any)
-                        let imageDic = json?["data"] as? [String:Any]
-                        print(imageDic?["link"] as Any)
+                    upload.responseJSON { response in
+                        if let result = response.data {
+                            do {
+                                let json = try JSON(data: result)
+                                let success = json["success"].boolValue
+                                if success {
+                                    if let url = json["data"]["link"].string {
+                                        print(url)
+                                    }
+                                } else {
+                                    print("Upload to Imgur failed. \(json)")
+                                }
+                            } catch {
+                                print("Not a valid json.")
+                            }
+                        }
                     }
                 case .failure(let encodingError):
                     print("error:\(encodingError)")
