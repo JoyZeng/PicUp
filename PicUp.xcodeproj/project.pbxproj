@@ -27,6 +27,7 @@
 		A8CF78A021BCB2840067AE52 /* ShortcutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CF789F21BCB2840067AE52 /* ShortcutService.swift */; };
 		A8CF78A321BCBEEC0067AE52 /* HotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CF78A121BCBEE80067AE52 /* HotKey.framework */; };
 		A8CF78A421BCBEEC0067AE52 /* HotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8CF78A121BCBEE80067AE52 /* HotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8CF78A621BD6F380067AE52 /* ClipboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CF78A521BD6F380067AE52 /* ClipboardService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +67,7 @@
 		A8CF789721BA0E370067AE52 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
 		A8CF789F21BCB2840067AE52 /* ShortcutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutService.swift; sourceTree = "<group>"; };
 		A8CF78A121BCBEE80067AE52 /* HotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HotKey.framework; path = Carthage/Build/Mac/HotKey.framework; sourceTree = "<group>"; };
+		A8CF78A521BD6F380067AE52 /* ClipboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				A8CF787B21B777F40067AE52 /* NotificationCenter.swift */,
 				A8CF789F21BCB2840067AE52 /* ShortcutService.swift */,
+				A8CF78A521BD6F380067AE52 /* ClipboardService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				A8CF786A21B1C9670067AE52 /* EventMonitor.swift in Sources */,
 				A868499021AF1D4700CD974B /* QuotesViewController.swift in Sources */,
 				A868498E21AF1D4700CD974B /* Quote.swift in Sources */,
+				A8CF78A621BD6F380067AE52 /* ClipboardService.swift in Sources */,
 				A868497121AF11F200CD974B /* AppDelegate.swift in Sources */,
 				A8CF78A021BCB2840067AE52 /* ShortcutService.swift in Sources */,
 				A8CF787421B49A890067AE52 /* ImgurAPI.swift in Sources */,
