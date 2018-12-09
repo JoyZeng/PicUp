@@ -24,6 +24,9 @@
 		A8CF789221BA0B500067AE52 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8CF788F21BA0B3F0067AE52 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8CF789921BA0E3E0067AE52 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CF789721BA0E370067AE52 /* SwiftyJSON.framework */; };
 		A8CF789A21BA0E3E0067AE52 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8CF789721BA0E370067AE52 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8CF78A021BCB2840067AE52 /* ShortcutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CF789F21BCB2840067AE52 /* ShortcutService.swift */; };
+		A8CF78A321BCBEEC0067AE52 /* HotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CF78A121BCBEE80067AE52 /* HotKey.framework */; };
+		A8CF78A421BCBEEC0067AE52 /* HotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8CF78A121BCBEE80067AE52 /* HotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A8CF78A421BCBEEC0067AE52 /* HotKey.framework in Embed Frameworks */,
 				A8CF789A21BA0E3E0067AE52 /* SwiftyJSON.framework in Embed Frameworks */,
 				A8CF789221BA0B500067AE52 /* Alamofire.framework in Embed Frameworks */,
 			);
@@ -60,6 +64,8 @@
 		A8CF788121B9AD7D0067AE52 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		A8CF788F21BA0B3F0067AE52 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		A8CF789721BA0E370067AE52 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
+		A8CF789F21BCB2840067AE52 /* ShortcutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutService.swift; sourceTree = "<group>"; };
+		A8CF78A121BCBEE80067AE52 /* HotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HotKey.framework; path = Carthage/Build/Mac/HotKey.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8CF78A321BCBEEC0067AE52 /* HotKey.framework in Frameworks */,
 				A8CF789021BA0B3F0067AE52 /* Alamofire.framework in Frameworks */,
 				A8CF789921BA0E3E0067AE52 /* SwiftyJSON.framework in Frameworks */,
 			);
@@ -116,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				A8CF787B21B777F40067AE52 /* NotificationCenter.swift */,
+				A8CF789F21BCB2840067AE52 /* ShortcutService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -150,6 +158,7 @@
 		A8CF788321BA0A740067AE52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8CF78A121BCBEE80067AE52 /* HotKey.framework */,
 				A8CF789721BA0E370067AE52 /* SwiftyJSON.framework */,
 				A8CF788F21BA0B3F0067AE52 /* Alamofire.framework */,
 			);
@@ -244,6 +253,7 @@
 				A868499021AF1D4700CD974B /* QuotesViewController.swift in Sources */,
 				A868498E21AF1D4700CD974B /* Quote.swift in Sources */,
 				A868497121AF11F200CD974B /* AppDelegate.swift in Sources */,
+				A8CF78A021BCB2840067AE52 /* ShortcutService.swift in Sources */,
 				A8CF787421B49A890067AE52 /* ImgurAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

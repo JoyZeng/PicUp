@@ -14,12 +14,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let popover = NSPopover()
     var eventMonitor: EventMonitor?
+    let shortcutService = ShortcutService()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         constructStatusButton()
 //        constructMenu()
         constructEvent()
         NSUserNotificationCenter.default.delegate = NotificationCenter.shared
+        shortcutService.register()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
