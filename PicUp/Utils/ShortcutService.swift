@@ -10,8 +10,9 @@ import Cocoa
 import HotKey
 
 class ShortcutService: NSObject {
+    static let shared = ShortcutService()
+
     var uploadHotKey: HotKey?
-    
     
     func register() {
         registerUpload()
