@@ -19,9 +19,10 @@ class ShortcutService: NSObject {
     }
     
     private func registerUpload() {
+        // Command + Option + V
         uploadHotKey = HotKey(key: .v, modifiers: [.command, .option])
         uploadHotKey!.keyDownHandler = {
-            print("Pressed at \(Date())")
+            UploadService.shared.uploadClipboardItem()
         }
     }
     
