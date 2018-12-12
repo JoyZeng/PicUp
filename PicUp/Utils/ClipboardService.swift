@@ -43,4 +43,10 @@ class ClipboardService: NSObject {
         return nil
       
     }
+    
+    func writeToClipboard(content: String) {
+        let pasteBoard = NSPasteboard.general
+        pasteBoard.clearContents()
+        pasteBoard.setString(content, forType: .string)
+    }
 }

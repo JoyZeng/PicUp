@@ -12,8 +12,7 @@ import SwiftyJSON
 import AppKit
 
 class SMMSAPI: NSObject {
-    static func post(imagePath: String) {
-        let imageURL = URL(fileURLWithPath: imagePath)
+    static func post(imageURL: URL) {
         let imageName = imageURL.lastPathComponent
         let imageType = imageURL.pathExtension
         let imageData = try? Data(contentsOf: imageURL)

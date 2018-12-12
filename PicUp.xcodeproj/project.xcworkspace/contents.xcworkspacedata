@@ -2,15 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/joy/Documents/personal_workpace/picup/PicUp/Models">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/joy/Documents/personal_workpace/picup/PicUp/Utils">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/joy/Documents/personal_workpace/picup/PicUp/Views">
-   </FileRef>
-   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
