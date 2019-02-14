@@ -36,7 +36,7 @@ class ImgurAPI: NSObject {
                             if success {
                                 if let url = json["data"]["link"].string {
                                     ClipboardService.shared.writeToClipboard(content: url)
-                                    NotificationCenter.shared.showNotification(withTitle: "Image link copied.", informativeText: url)
+                                    NotificationCenter.shared.showNotification(withTitle: "Image link copied to clipboard.", informativeText: url)
                                 }
                             } else {
                                 print("Upload to Imgur failed. \(json)")
