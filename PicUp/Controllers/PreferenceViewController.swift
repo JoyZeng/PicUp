@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PreferenceViewController.swift
 //  PicUp
 //
 //  Created by Joy on 2018-11-28.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class PreferenceViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
