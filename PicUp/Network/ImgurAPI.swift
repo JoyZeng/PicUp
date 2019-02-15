@@ -12,15 +12,6 @@ import SwiftyJSON
 import AppKit
 
 class ImgurAPI: NSObject {
-
-    static func post(imageURL: URL) {
-        let imageData = try? Data(contentsOf: imageURL)
-        if let data = imageData {
-            post(imageData: data)
-        }
-        
-    }
-    
     static func post(imageData: Data) {
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(imageData, withName: "image")
@@ -45,7 +36,7 @@ class ImgurAPI: NSObject {
                 if success {
                     if let url = json["data"]["link"].string {
                         ClipboardService.shared.writeToClipboard(content: url)
-                        NotificationCenter.shared.showNotification(withTitle: "Image link copied to clipboard.", informativeText: url)
+                        NotificationCenter.shared.showNotification(withTitle: "Image link copied to clipboard.", informativeText: url, image: nil)
                     }
                 } else {
                     print("Upload to Imgur failed. \(json)")

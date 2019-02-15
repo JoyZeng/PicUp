@@ -51,7 +51,7 @@ class SMMSAPI: NSObject {
                 if code == "success" {
                     if let url = json["data"]["url"].string {
                         ClipboardService.shared.writeToClipboard(content: url)
-                        NotificationCenter.shared.showNotification(withTitle: "Image link copied.", informativeText: url)
+                        NotificationCenter.shared.showNotification(withTitle: "Image link copied.", informativeText: url, image: nil)
                     }
                 } else if code == "error" {
                     if let msg = json["msg"].string {

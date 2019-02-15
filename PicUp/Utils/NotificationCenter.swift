@@ -12,12 +12,13 @@ class NotificationCenter: NSObject, NSUserNotificationCenterDelegate {
     
     static let shared = NotificationCenter()
     
-    func showNotification(withTitle title: String,  informativeText: String) {
+    func showNotification(withTitle title: String,  informativeText: String, image: NSImage?) {
         let notification = NSUserNotification()
         notification.identifier = "me.zengyi.PicUp"
         notification.title = title
         notification.informativeText = informativeText
         notification.soundName = NSUserNotificationDefaultSoundName
+        notification.contentImage = image
         NSUserNotificationCenter.default.removeDeliveredNotification(notification)
         NSUserNotificationCenter.default.deliver(notification)
     }
