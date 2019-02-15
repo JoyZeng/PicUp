@@ -14,7 +14,7 @@ class NotificationCenter: NSObject, NSUserNotificationCenterDelegate {
     
     func showNotification(withTitle title: String,  informativeText: String, image: NSImage?) {
         let notification = NSUserNotification()
-        notification.identifier = "me.zengyi.PicUp"
+        notification.identifier = Bundle.main.bundleIdentifier
         notification.title = title
         notification.informativeText = informativeText
         notification.soundName = NSUserNotificationDefaultSoundName
