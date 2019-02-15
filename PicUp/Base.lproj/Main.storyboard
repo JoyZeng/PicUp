@@ -714,7 +714,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Bk-jQ-GaH">
-                                <rect key="frame" x="44" y="147" width="65" height="18"/>
+                                <rect key="frame" x="38" y="107" width="65" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="radio" title="SM.MS" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="YW8-pF-dQc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -722,7 +722,7 @@
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQG-zz-G8m">
-                                <rect key="frame" x="43" y="214" width="96" height="17"/>
+                                <rect key="frame" x="37" y="179" width="96" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Upload Service" id="meJ-13-ixF">
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -731,13 +731,30 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qPX-KN-j4Y">
-                                <rect key="frame" x="44" y="177" width="57" height="18"/>
+                                <rect key="frame" x="38" y="142" width="57" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="radio" title="Imgur" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="1Sr-nc-cCq">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W2q-kK-idN">
+                                <rect key="frame" x="34" y="215" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSInfo" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="OdS-vs-OCz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKo-pq-qvH">
+                                <rect key="frame" x="37" y="64" width="96" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Shortcut" id="RQR-58-Zi8">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                 </viewController>
@@ -746,4 +763,7 @@
             <point key="canvasLocation" x="95" y="1158"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSInfo" width="32" height="32"/>
+    </resources>
 </document>

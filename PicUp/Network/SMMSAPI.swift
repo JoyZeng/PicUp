@@ -35,28 +35,32 @@ class SMMSAPI: NSObject {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        if let result = response.data {
-                            do {
-                                let json = try JSON(data: result)
-                                let code = json["code"].string
-                                if code == "success" {
-                                    if let url = json["data"]["url"].string {
-                                        ClipboardService.shared.writeToClipboard(content: url)
-                                        NotificationCenter.shared.showNotification(withTitle: "Image link copied.", informativeText: url)
-                                    }
-                                } else if code == "error" {
-                                    if let msg = json["msg"].string {
-                                        print("Upload to smms failed: \(msg)")
-                                    }
-                                }
-                            } catch {
-                                print("Not a valid json.")
-                            }
-                        }
+                        parse(response: response)
                     }
                 case .failure(let encodingError):
                     print("error:\(encodingError)")
                 }
         })
+    }
+    
+    static func parse(response: DataResponse<Any>) {
+        if let result = response.data {
+            do {
+                let json = try JSON(data: result)
+                let code = json["code"].string
+                if code == "success" {
+                    if let url = json["data"]["url"].string {
+                        ClipboardService.shared.writeToClipboard(content: url)
+                        NotificationCenter.shared.showNotification(withTitle: "Image link copied.", informativeText: url)
+                    }
+                } else if code == "error" {
+                    if let msg = json["msg"].string {
+                        print("Upload to smms failed: \(msg)")
+                    }
+                }
+            } catch {
+                print("Not a valid json.")
+            }
+        }
     }
 }

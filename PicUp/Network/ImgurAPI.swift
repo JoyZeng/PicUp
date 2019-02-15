@@ -29,26 +29,30 @@ class ImgurAPI: NSObject {
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseJSON { response in
-                    if let result = response.data {
-                        do {
-                            let json = try JSON(data: result)
-                            let success = json["success"].boolValue
-                            if success {
-                                if let url = json["data"]["link"].string {
-                                    ClipboardService.shared.writeToClipboard(content: url)
-                                    NotificationCenter.shared.showNotification(withTitle: "Image link copied to clipboard.", informativeText: url)
-                                }
-                            } else {
-                                print("Upload to Imgur failed. \(json)")
-                            }
-                        } catch {
-                            print("Not a valid json.")
-                        }
-                    }
+                    parse(response: response)
                 }
             case .failure(let encodingError):
                 print("error:\(encodingError)")
             }
         })
+    }
+    
+    static func parse(response: DataResponse<Any>) {
+        if let result = response.data {
+            do {
+                let json = try JSON(data: result)
+                let success = json["success"].boolValue
+                if success {
+                    if let url = json["data"]["link"].string {
+                        ClipboardService.shared.writeToClipboard(content: url)
+                        NotificationCenter.shared.showNotification(withTitle: "Image link copied to clipboard.", informativeText: url)
+                    }
+                } else {
+                    print("Upload to Imgur failed. \(json)")
+                }
+            } catch {
+                print("Not a valid json.")
+            }
+        }
     }
 }
