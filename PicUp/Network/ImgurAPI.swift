@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import AppKit
 
+// API doc: https://api.imgur.com/endpoints/image/
 class ImgurAPI: NSObject {
     static func post(imageData: Data, imageType: String?, completionHandler: @escaping (_ url: String?, _ errorMessage: String?) -> Void) {
         Alamofire.upload(multipartFormData: { multipartFormData in
