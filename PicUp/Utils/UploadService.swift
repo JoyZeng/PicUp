@@ -13,21 +13,30 @@ class UploadService: NSObject {
     
     func uploadClipboardItem() {
         if let content = ClipboardService.shared.getClipboardImage() {
+            // Retrive image data
             var imageData: Data? = nil
             if let url = content as? URL {
                 imageData = try? Data(contentsOf: url)
             } else  {
                 imageData = content as? Data
             }
-            if let data = imageData {
-                ImgurAPI.post(imageData: data)
+            
+            // Upload image data
+            if let imageData = imageData {
+                ImgurAPI.post(imageData: imageData) { url, errorMessage in
+                    if let url = url {
+                        self.successHandler(url: url, imageData: imageData)
+                    } else {
+                        self.failureHandler(errorMessage: errorMessage!)
+                    }
+                }
             }
         }
     }
     
-    func successHandler(url: String) {
+    func successHandler(url: String, imageData: Data) {
         ClipboardService.shared.writeToClipboard(content: url)
-        NotificationCenter.shared.showNotification(withTitle: "Image link copied to clipboard.", informativeText: url, image: nil)
+        NotificationCenter.shared.showNotification(withTitle: "Image link copied to clipboard.", informativeText: url, image: NSImage.init(data: imageData))
     }
     
     func failureHandler(errorMessage: String) {

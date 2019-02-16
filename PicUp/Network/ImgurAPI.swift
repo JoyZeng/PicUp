@@ -12,7 +12,7 @@ import SwiftyJSON
 import AppKit
 
 class ImgurAPI: NSObject {
-    static func post(imageData: Data) {
+    static func post(imageData: Data, completionHandler: @escaping (_ url: String?, _ errorMessage: String?) -> Void) {
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(imageData, withName: "image")
         }, to: Constants.Imgur.url, method: .post, headers: ["Authorization": "Client-ID \(Constants.Imgur.clientId)"],
@@ -20,29 +20,32 @@ class ImgurAPI: NSObject {
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseJSON { response in
-                    parse(response: response)
+                    parse(response: response) { url, errorMessage in
+                        completionHandler(url, errorMessage)
+                    }
                 }
             case .failure(let encodingError):
+                completionHandler(nil, "failed")
                 print("error:\(encodingError)")
             }
         })
     }
     
-    static func parse(response: DataResponse<Any>) {
+    static func parse(response: DataResponse<Any>, completionHandler: (_ url: String?, _ errorMessage: String?) -> Void) {
         if let result = response.data {
             do {
                 let json = try JSON(data: result)
                 let success = json["success"].boolValue
                 if success {
                     if let url = json["data"]["link"].string {
-                        ClipboardService.shared.writeToClipboard(content: url)
-                        NotificationCenter.shared.showNotification(withTitle: "Image link copied to clipboard.", informativeText: url, image: nil)
+                        completionHandler(url, nil)
                     }
                 } else {
+                    completionHandler(nil, "failed")
                     print("Upload to Imgur failed. \(json)")
                 }
             } catch {
-                print("Not a valid json.")
+                completionHandler(nil, "failed")
             }
         }
     }
