@@ -12,7 +12,7 @@ import SwiftyJSON
 import AppKit
 
 // API doc: https://sm.ms/doc/
-class SMMSAPI: NSObject {
+class SMMSAPI: NSObject, UploadProtocol {
     static func post(imageData: Data, imageType: String?, completionHandler: @escaping (_ url: String?, _ errorMessage: String?) -> Void) {
         Alamofire.upload(multipartFormData: { multipartFormData in
             let imageType = imageType ?? "png"
