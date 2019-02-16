@@ -15,15 +15,17 @@ class UploadService: NSObject {
         if let content = ClipboardService.shared.getClipboardImage() {
             // Retrive image data
             var imageData: Data? = nil
+            var imageType: String? = nil
             if let url = content as? URL {
                 imageData = try? Data(contentsOf: url)
+                imageType = url.pathExtension
             } else  {
                 imageData = content as? Data
             }
             
             // Upload image data
             if let imageData = imageData {
-                ImgurAPI.post(imageData: imageData) { url, errorMessage in
+                SMMSAPI.post(imageData: imageData, imageType: imageType) { url, errorMessage in
                     if let url = url {
                         self.successHandler(url: url, imageData: imageData)
                     } else {
@@ -31,6 +33,8 @@ class UploadService: NSObject {
                     }
                 }
             }
+        } else {
+            NotificationCenter.shared.showNotification(withTitle: "Not valid image", informativeText: nil, image: nil)
         }
     }
     

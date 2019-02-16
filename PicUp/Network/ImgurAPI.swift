@@ -12,7 +12,7 @@ import SwiftyJSON
 import AppKit
 
 class ImgurAPI: NSObject {
-    static func post(imageData: Data, completionHandler: @escaping (_ url: String?, _ errorMessage: String?) -> Void) {
+    static func post(imageData: Data, imageType: String?, completionHandler: @escaping (_ url: String?, _ errorMessage: String?) -> Void) {
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(imageData, withName: "image")
         }, to: Constants.Imgur.url, method: .post, headers: ["Authorization": "Client-ID \(Constants.Imgur.clientId)"],
@@ -41,10 +41,11 @@ class ImgurAPI: NSObject {
                         completionHandler(url, nil)
                     }
                 } else {
-                    completionHandler(nil, "failed")
                     print("Upload to Imgur failed. \(json)")
+                    completionHandler(nil, "failed")
                 }
             } catch {
+                print("Response is not a valid json.")
                 completionHandler(nil, "failed")
             }
         }

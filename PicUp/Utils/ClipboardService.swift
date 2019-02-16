@@ -20,12 +20,14 @@ class ClipboardService: NSObject {
         // It is fileURL path
         if let contentPath = item.string(forType: .fileURL) {
             let contentURL = URL(string: contentPath)
+            print(contentPath)
             return contentURL
         }
         
         // It is a url string
         if let contentString = item.string(forType: .string) {
             var contentURL: URL? = nil
+            print(contentString)
             if contentString.starts(with: "/") {
                 // It is local file path string
                 contentURL = URL(fileURLWithPath: contentString)
@@ -39,6 +41,8 @@ class ClipboardService: NSObject {
         if let contentImageData = item.data(forType: .tiff) {
             return contentImageData
         }
+        
+    
         
         return nil
       

@@ -12,54 +12,44 @@ import SwiftyJSON
 import AppKit
 
 class SMMSAPI: NSObject {
-    static func post(imageURL: URL) {
-        let imageName = imageURL.lastPathComponent
-        let imageType = imageURL.pathExtension
-        let imageData = try? Data(contentsOf: imageURL)
-        
-        let parameters: [String : Any] = [
-            "ssl": true,
-            "format": "json"
-            ]
-    
+    static func post(imageData: Data, imageType: String?, completionHandler: @escaping (_ url: String?, _ errorMessage: String?) -> Void) {
         Alamofire.upload(multipartFormData: { multipartFormData in
-                for (key, value) in parameters {
-                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
-                }
-            
-                if let data = imageData {
-                    multipartFormData.append(data, withName: "smfile", fileName: imageName, mimeType: "image/\(imageType)")
-                }
+            let imageType = imageType ?? "png"
+            multipartFormData.append(imageData, withName: "smfile", fileName: "image.\(imageType)", mimeType: "image/\(imageType)")
             }, to: Constants.SMMS.url,
                encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        parse(response: response)
+                        parse(response: response) { url, errorMessage in
+                            completionHandler(url, errorMessage)
+                        }
                     }
                 case .failure(let encodingError):
+                    completionHandler(nil, "failed")
                     print("error:\(encodingError)")
                 }
         })
     }
     
-    static func parse(response: DataResponse<Any>) {
+    static func parse(response: DataResponse<Any>, completionHandler: (_ url: String?, _ errorMessage: String?) -> Void) {
         if let result = response.data {
             do {
                 let json = try JSON(data: result)
                 let code = json["code"].string
                 if code == "success" {
                     if let url = json["data"]["url"].string {
-                        ClipboardService.shared.writeToClipboard(content: url)
-                        NotificationCenter.shared.showNotification(withTitle: "Image link copied.", informativeText: url, image: nil)
+                        completionHandler(url, nil)
                     }
                 } else if code == "error" {
                     if let msg = json["msg"].string {
+                        completionHandler(nil, "failed")
                         print("Upload to smms failed: \(msg)")
                     }
                 }
             } catch {
-                print("Not a valid json.")
+                print("Response is not a valid json.")
+                completionHandler(nil, "failed")
             }
         }
     }

@@ -12,7 +12,7 @@ class NotificationCenter: NSObject, NSUserNotificationCenterDelegate {
     
     static let shared = NotificationCenter()
     
-    func showNotification(withTitle title: String,  informativeText: String, image: NSImage?) {
+    func showNotification(withTitle title: String,  informativeText: String?, image: NSImage?) {
         let notification = NSUserNotification()
         notification.identifier = Bundle.main.bundleIdentifier
         notification.title = title
