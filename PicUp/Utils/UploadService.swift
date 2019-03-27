@@ -25,7 +25,7 @@ class UploadService: NSObject {
             
             // Upload image data
             if let imageData = imageData {
-                SMMSAPI.post(imageData: imageData, imageType: imageType) { url, errorMessage in
+                ImgurAPI.post(imageData: imageData, imageType: imageType) { url, errorMessage in
                     if let url = url {
                         self.successHandler(url: url, imageData: imageData)
                     } else {

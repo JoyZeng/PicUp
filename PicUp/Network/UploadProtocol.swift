@@ -12,5 +12,5 @@ import Alamofire
 protocol UploadProtocol {
     static func post(imageData: Data, imageType: String?, completionHandler: @escaping (_ url: String?, _ errorMessage: String?) -> Void)
     
-    static func parse(response: DataResponse<Any>, completionHandler: (_ url: String?, _ errorMessage: String?) -> Void)
+    static func parse(value: Data, completionHandler: (_ url: String?, _ errorMessage: String?) -> Void)
 }

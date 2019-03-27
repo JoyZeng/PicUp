@@ -14,41 +14,38 @@ import AppKit
 // API doc: https://api.imgur.com/endpoints/image/
 class ImgurAPI: NSObject, UploadProtocol {
     static func post(imageData: Data, imageType: String?, completionHandler: @escaping (_ url: String?, _ errorMessage: String?) -> Void) {
-        Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(imageData, withName: "image")
-        }, to: Constants.Imgur.url, method: .post, headers: ["Authorization": "Client-ID \(Constants.Imgur.clientId)"],
-           encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    parse(response: response) { url, errorMessage in
+        AF.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "image")
+            },
+            usingThreshold: 0,
+            to: Constants.Imgur.url,
+            method: .post,
+            headers: ["Authorization": "Client-ID \(Constants.Imgur.clientId)"],
+            interceptor: nil)
+            .response { response in
+                switch response.result {
+                case .success(let value):
+                    parse(value: value!) { url, errorMessage in
                         completionHandler(url, errorMessage)
                     }
+                case .failure(let error):
+                    completionHandler(nil, "failed")
+                    print("error:\(error)")
                 }
-            case .failure(let encodingError):
-                completionHandler(nil, "failed")
-                print("error:\(encodingError)")
-            }
-        })
+        }
     }
     
-    static func parse(response: DataResponse<Any>, completionHandler: (_ url: String?, _ errorMessage: String?) -> Void) {
-        if let result = response.data {
-            do {
-                let json = try JSON(data: result)
-                let success = json["success"].boolValue
-                if success {
-                    if let url = json["data"]["link"].string {
-                        completionHandler(url, nil)
-                    }
-                } else {
-                    print("Upload to Imgur failed. \(json)")
-                    completionHandler(nil, "failed")
-                }
-            } catch {
-                print("Response is not a valid json.")
-                completionHandler(nil, "failed")
+    static func parse(value: Data, completionHandler: (_ url: String?, _ errorMessage: String?) -> Void) {
+        let json = JSON(value)
+        let success = json["success"].boolValue
+        if success {
+            if let url = json["data"]["link"].string {
+                completionHandler(url, nil)
             }
+        } else {
+            print("Upload to Imgur failed. \(json)")
+            completionHandler(nil, "failed")
         }
     }
 }
