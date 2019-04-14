@@ -27,4 +27,11 @@ class NotificationCenter: NSObject, NSUserNotificationCenterDelegate {
         return true
     }
     
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        if let text = notification.informativeText, let url = URL(string: text) {
+            NSWorkspace.shared.open(url)
+        }
+        
+    }
+    
 }
