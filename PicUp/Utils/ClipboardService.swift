@@ -13,6 +13,8 @@ class ClipboardService: NSObject {
     static let shared = ClipboardService()
 
     func getClipboardImage() -> Any? {
+        let supportedImageTypes: [NSPasteboard.PasteboardType] = [.tiff, .png]
+
         guard let item = NSPasteboard.general.pasteboardItems?.first else {
             return nil
         }
@@ -35,12 +37,14 @@ class ClipboardService: NSObject {
             return contentURL
         }
         
-        // It is image data
-        if let contentImageData = item.data(forType: .tiff) {
-            return contentImageData
+        for type in item.types{
+            // It is image
+            if supportedImageTypes.contains(type) {
+                if let imageData = item.data(forType: type) {
+                    return imageData
+                }
+            }
         }
-        
-    
         
         return nil
       

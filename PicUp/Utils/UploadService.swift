@@ -13,7 +13,7 @@ class UploadService: NSObject {
     
     func uploadClipboardItem() {
         if let content = ClipboardService.shared.getClipboardImage() {
-            // Retrive image data
+            // Retrieve image data
             var imageData: Data? = nil
             var imageType: String? = nil
             if let url = content as? URL {
